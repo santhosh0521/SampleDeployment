@@ -14,7 +14,7 @@
     <plugins>
       <plugin>
         <artifactId>maven-site-plugin</artifactId>
-        <version>3.9.6</version>
+        <version>3.7.1</version>
       </plugin>
     </plugins>
   </build>
