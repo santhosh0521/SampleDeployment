@@ -3,12 +3,12 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.tibco.bw</groupId>
-  <artifactId>SampleRestApi.application.parent</artifactId>
+  <artifactId>sample.application.parent</artifactId>
   <version>1.0.0-SNAPSHOT</version>
   <packaging>pom</packaging>
   <modules>
-    <module>../SampleRestApi</module>
-    <module>../SampleRestApi.application</module>
+    <module>../sample</module>
+    <module>../sample.application</module>
   </modules>
   <build>
     <plugins>

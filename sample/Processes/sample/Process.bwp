@@ -1,11 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<bpws:process exitOnStandardFault="no" name="samplerestapi.Process"
+<bpws:process exitOnStandardFault="no" name="sample.Process"
     suppressJoinFailure="yes"
-    targetNamespace="http://xmlns.example.com/20240220152523"
+    targetNamespace="http://xmlns.example.com/20240226144458"
     xmlns:bpws="http://docs.oasis-open.org/wsbpel/2.0/process/executable"
     xmlns:info="http://www.tibco.com/bw/process/info"
     xmlns:ns="http://www.tibco.com/pe/EngineTypes"
-    xmlns:ns0="http://xmlns.example.com/20240220152523PLT"
+    xmlns:ns0="http://www.tibco.com/namespaces/tnt/plugins/jms+37088a59-a7f6-4d18-919a-554565370c38+input"
+    xmlns:ns1="http://www.tibco.com/namespaces/tnt/plugins/jms"
+    xmlns:ns2="http://tns.tibco.com/bw/palette/internal/activityerror+bw.jms.send"
+    xmlns:ns3="http://tns.tibco.com/bw/activity/timer/xsd/output"
+    xmlns:ns4="http://www.tibco.com/namespaces/tnt/plugins/jms+e1c85947-8e98-49af-9287-764bc2b9aef4+output"
+    xmlns:ns5="http://tns.tibco.com/bw/palette/internal/activityerror+bw.jms.getmsg"
+    xmlns:ns6="http://www.tibco.com/pe/WriteToLogActivitySchema"
+    xmlns:ns7="http://xmlns.example.com/20240226144458PLT"
     xmlns:sca="http://docs.oasis-open.org/ns/opencsa/sca/200912"
     xmlns:sca-bpel="http://docs.oasis-open.org/ns/opencsa/sca-bpel/200801"
     xmlns:tibex="http://www.tibco.com/bpel/2007/extensions"
@@ -172,11 +179,11 @@
             <element name="DuplicateKeyException" type="tns:DuplicateKeyExceptionType"/>
         </schema>
         <wsdl:definitions
-            targetNamespace="http://xmlns.example.com/20240220152523PLT"
+            targetNamespace="http://xmlns.example.com/20240226144458PLT"
             xmlns:extns="http://tns.tibco.com/bw/REST"
             xmlns:plnk="http://docs.oasis-open.org/wsbpel/2.0/plnktype"
             xmlns:tibex="http://www.tibco.com/bpel/2007/extensions"
-            xmlns:tns="http://xmlns.example.com/20240220152523PLT"
+            xmlns:tns="http://xmlns.example.com/20240226144458PLT"
             xmlns:vprop="http://docs.oasis-open.org/wsbpel/2.0/varprop"
             xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
             <plnk:partnerLinkType name="partnerLinkType">
@@ -200,7 +207,7 @@
             <wsdl:portType name="resource"
                 tibex:bw.rest.apipath="/resource"
                 tibex:bw.rest.basepath="Resource"
-                tibex:bw.rest.resource="Service Descriptors/samplerestapi.Process-Resource.json"
+                tibex:bw.rest.resource="Service Descriptors/sample.Process-Resource.json"
                 tibex:bw.rest.resource.source="generated" tibex:source="bw.rest.service">
                 <wsdl:documentation>Resource service</wsdl:documentation>
                 <wsdl:operation name="get">
@@ -214,7 +221,7 @@
         </wsdl:definitions>
     </tibex:Types>
     <tibex:ProcessInfo callable="false" createdBy="user"
-        createdOn="Tue Feb 20 15:25:23 IST 2024" description=""
+        createdOn="Mon Feb 26 14:44:58 IST 2024" description=""
         extraErrorVars="true" modifiers="public"
         productVersion="6.8.0 V55 2021-11-10" scalable="true"
         singleton="true" stateless="true" type="IT"/>
@@ -545,9 +552,8 @@
                                     gradientStartColor="16777215" xsi:type="bwnotation:BackgroundStyle"/>
                                     <styles xsi:type="bwnotation:ResizingStyle"/>
                                     <element href="//0/@process/@activity/@activity"/>
-                                    <layoutConstraint height="108"
-                                    width="400" x="2"
-                                    xsi:type="notation:Bounds" y="2"/>
+                                    <layoutConstraint height="384"
+                                    width="572" xsi:type="notation:Bounds"/>
                                 </children>
                                 <styles xsi:type="notation:SortingStyle"/>
                                 <styles xsi:type="notation:FilteringStyle"/>
@@ -556,8 +562,7 @@
                             <styles xsi:type="bwnotation:BackgroundStyle"/>
                             <styles xsi:type="bwnotation:ResizingStyle"/>
                             <element href="//0/@process/@activity"/>
-                            <layoutConstraint height="365" width="444"
-                                x="30" xsi:type="notation:Bounds" y="20"/>
+                            <layoutConstraint height="384" width="575" xsi:type="notation:Bounds"/>
                         </children>
                         <styles xsi:type="notation:SortingStyle"/>
                         <styles xsi:type="notation:FilteringStyle"/>
@@ -567,7 +572,8 @@
                     <styles xsi:type="bwnotation:BackgroundStyle"/>
                     <styles xsi:type="bwnotation:ResizingStyle"/>
                     <element href="//0/@process/@activity"/>
-                    <layoutConstraint height="409" width="519" xsi:type="notation:Bounds"/>
+                    <layoutConstraint height="408" width="575" x="1"
+                        xsi:type="notation:Bounds" y="1"/>
                 </children>
                 <styles xsi:type="notation:SortingStyle"/>
                 <styles xsi:type="notation:FilteringStyle"/>
@@ -575,7 +581,7 @@
             </children>
             <styles fontName="Segoe UI" lineColor="0" xsi:type="notation:ShapeStyle"/>
             <element href="//0/@process"/>
-            <layoutConstraint height="460" width="860" xsi:type="notation:Bounds"/>
+            <layoutConstraint height="460" width="917" xsi:type="notation:Bounds"/>
         </children>
         <styles xsi:type="notation:DiagramStyle"/>
         <element href="//0"/>
@@ -593,19 +599,34 @@
     </notation:Diagram>
     <tibex:NamespaceRegistry enabled="true">
         <tibex:namespaceItem
-            namespace="http://xmlns.example.com/20240220152523PLT" prefix="tns"/>
+            namespace="http://www.tibco.com/namespaces/tnt/plugins/jms+37088a59-a7f6-4d18-919a-554565370c38+input" prefix="tns"/>
+        <tibex:namespaceItem
+            namespace="http://www.w3.org/2001/XMLSchema-instance" prefix="xsi"/>
+        <tibex:namespaceItem
+            namespace="http://www.tibco.com/pe/WriteToLogActivitySchema" prefix="tns1"/>
+        <tibex:namespaceItem
+            namespace="http://www.tibco.com/namespaces/tnt/plugins/jms+e1c85947-8e98-49af-9287-764bc2b9aef4+output" prefix="ns"/>
+        <tibex:namespaceItem
+            namespace="http://xmlns.example.com/20240226144458PLT" prefix="tns2"/>
     </tibex:NamespaceRegistry>
     <bpws:import importType="http://www.w3.org/2001/XMLSchema" namespace="http://tns.tibco.com/bw/REST"/>
     <bpws:partnerLinks>
         <bpws:partnerLink myRole="use" name="resource"
-            partnerLinkType="ns0:partnerLinkType"
+            partnerLinkType="ns7:partnerLinkType"
             sca-bpel:ignore="false" sca-bpel:service="resource"/>
     </bpws:partnerLinks>
     <bpws:variables>
         <bpws:variable element="ns:ProcessContext"
             name="_processContext" sca-bpel:internal="true"/>
-        <bpws:variable messageType="ns0:getRequest" name="get" sca-bpel:internal="true"/>
-        <bpws:variable messageType="ns0:getResponse" name="getOut-input" sca-bpel:internal="true"/>
+        <bpws:variable name="jmsConnection" sca-bpel:hotUpdate="false"
+            sca-bpel:privateProperty="true" sca-bpel:property="yes"
+            sca-bpel:sharedResourceType="{http://xsd.tns.tibco.com/bw/models/sharedresource/jms}JMSConnectionFactory" type="xsd:string">
+            <bpws:from>
+                <bpws:literal>sample.JMSConnectionResource</bpws:literal>
+            </bpws:from>
+        </bpws:variable>
+        <bpws:variable messageType="ns7:getRequest" name="get" sca-bpel:internal="true"/>
+        <bpws:variable messageType="ns7:getResponse" name="getOut-input" sca-bpel:internal="true"/>
     </bpws:variables>
     <bpws:extensions>
         <bpws:extension mustUnderstand="no" namespace="http://www.eclipse.org/gmf/runtime/1.0.2/notation"/>
@@ -618,33 +639,33 @@
     <bpws:scope name="scope">
         <bpws:flow name="flow">
             <bpws:links/>
-            <bpws:pick createInstance="yes" name="pick" tibex:xpdlId="9425defe-b976-4e26-959c-a0e54ec1e31c">
+            <bpws:pick createInstance="yes" name="pick" tibex:xpdlId="27d88f6f-7bf2-44d1-8e43-431960f82003">
                 <bpws:onMessage operation="get" partnerLink="resource"
-                    portType="ns0:resource"
-                    tibex:xpdlId="694a0c16-4ae1-496f-a4a8-a0b0610a8bff" variable="get">
+                    portType="ns7:resource"
+                    tibex:xpdlId="9e184a6d-ced8-4480-8510-b769ecfd5bb2" variable="get">
                     <bpws:scope name="scope1">
                         <bpws:flow name="flow1">
                             <bpws:links>
                                 <bpws:link name="OnMessageStartTogetOut" tibex:linkType="SUCCESS"/>
                             </bpws:links>
                             <bpws:empty name="OnMessageStart"
-                                tibex:constructor="onMessageStart" tibex:xpdlId="0225cb14-3692-47de-8e31-e62d09e7aa8b">
+                                tibex:constructor="onMessageStart" tibex:xpdlId="64dd1107-3bdf-4d46-9ffa-47f03fd205b3">
                                 <bpws:sources>
                                     <bpws:source linkName="OnMessageStartTogetOut"/>
                                 </bpws:sources>
                             </bpws:empty>
                             <bpws:empty name="OnMessageEnd"
-                                tibex:constructor="onMessageEnd" tibex:xpdlId="f4a640a0-3a00-414d-a6f1-e8037683cdeb"/>
+                                tibex:constructor="onMessageEnd" tibex:xpdlId="5250bd5b-1184-4653-9c7e-e6a8b09668f3"/>
                             <bpws:reply name="getOut" operation="get"
                                 partnerLink="resource"
-                                portType="ns0:resource"
-                                tibex:xpdlId="bda1bbcf-706f-457a-a032-d6e9657bf3dd" variable="getOut-input">
+                                portType="ns7:resource"
+                                tibex:xpdlId="168c9c81-cfee-4c09-b4a5-c6829c25f78f" variable="getOut-input">
                                 <tibex:inputBindings>
                                     <tibex:partBinding
-                                    expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns=&quot;http://xmlns.example.com/20240220152523PLT&quot; version=&quot;2.0&quot;>&#xa;    &lt;xsl:template name=&quot;getOut-input&quot; match=&quot;/&quot;>&#xa;        &lt;item>&#xa;            &lt;xsl:value-of select=&quot;&amp;quot;Succesfully received the request&amp;quot;&quot;/>&#xa;        &lt;/item>&#xa;    &lt;/xsl:template>&#xa;&lt;/xsl:stylesheet>" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"/>
+                                    expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns2=&quot;http://xmlns.example.com/20240226144458PLT&quot; version=&quot;2.0&quot;>&#xa;    &lt;xsl:template name=&quot;getOut-input&quot; match=&quot;/&quot;>&#xa;        &lt;item>&#xa;            &lt;xsl:value-of select=&quot;&amp;quot;Able to recive requests&amp;quot;&quot;/>&#xa;        &lt;/item>&#xa;    &lt;/xsl:template>&#xa;&lt;/xsl:stylesheet>" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"/>
                                 </tibex:inputBindings>
                                 <tibex:inputBinding expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0">&lt;?xml version="1.0" encoding="UTF-8"?&gt;
-&lt;xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:tns="http://xmlns.example.com/20240220152523PLT" version="2.0"&gt;&lt;xsl:template name="getOut-input" match="/"&gt;&lt;tns:getResponse&gt;&lt;item&gt;&lt;xsl:value-of select="&amp;quot;Succesfully received the request&amp;quot;"/&gt;&lt;/item&gt;&lt;/tns:getResponse&gt;&lt;/xsl:template&gt;&lt;/xsl:stylesheet&gt;</tibex:inputBinding>
+&lt;xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:tns2="http://xmlns.example.com/20240226144458PLT" version="2.0"&gt;&lt;xsl:template name="getOut-input" match="/"&gt;&lt;tns2:getResponse&gt;&lt;item&gt;&lt;xsl:value-of select="&amp;quot;Able to recive requests&amp;quot;"/&gt;&lt;/item&gt;&lt;/tns2:getResponse&gt;&lt;/xsl:template&gt;&lt;/xsl:stylesheet&gt;</tibex:inputBinding>
                                 <bpws:targets>
                                     <bpws:target linkName="OnMessageStartTogetOut"/>
                                 </bpws:targets>

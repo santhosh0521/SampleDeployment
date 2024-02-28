@@ -4,11 +4,11 @@
   <modelVersion>4.0.0</modelVersion>
   <parent>
     <groupId>com.tibco.bw</groupId>
-    <artifactId>SampleRestApi.application.parent</artifactId>
+    <artifactId>sample.application.parent</artifactId>
     <version>1.0.0-SNAPSHOT</version>
-    <relativePath>../SampleRestApi.application.parent</relativePath>
+    <relativePath>../sample.application.parent</relativePath>
   </parent>
-  <artifactId>SampleRestApi</artifactId>
+  <artifactId>sample</artifactId>
   <packaging>bwmodule</packaging>
   <dependencies>
     <dependency>

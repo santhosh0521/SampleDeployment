@@ -4,11 +4,11 @@
   <modelVersion>4.0.0</modelVersion>
   <parent>
     <groupId>com.tibco.bw</groupId>
-    <artifactId>SampleRestApi.application.parent</artifactId>
+    <artifactId>sample.application.parent</artifactId>
     <version>1.0.0-SNAPSHOT</version>
-    <relativePath>../SampleRestApi.application.parent</relativePath>
+    <relativePath>../sample.application.parent</relativePath>
   </parent>
-  <artifactId>SampleRestApi.application</artifactId>
+  <artifactId>sample.application</artifactId>
   <packaging>bwear</packaging>
   <properties>
     <backup>false</backup>
@@ -20,7 +20,7 @@
     <externalProfileLoc></externalProfileLoc>
     <truststorePassword></truststorePassword>
     <agentUsername></agentUsername>
-    <appSpace>NewDeploymentAP</appSpace>
+    <appSpace>sample-AppSpace</appSpace>
     <agentSSL>false</agentSSL>
     <backupLocation></backupLocation>
     <earUploadPath></earUploadPath>
@@ -34,14 +34,14 @@
     <domainDesc></domainDesc>
     <keystorePassword></keystorePassword>
     <bw.Home>\bw\6.8</bw.Home>
-    <httpPort>9001</httpPort>
+    <httpPort>1003</httpPort>
     <profile></profile>
     <restartAppNode>true</restartAppNode>
-    <appNode>NewDeploymentAN</appNode>
+    <appNode>sample-AppNode</appNode>
     <failIfNoTests>false</failIfNoTests>
     <truststorePath></truststorePath>
     <keystorePath></keystorePath>
-    <domain>NewDeployment</domain>
+    <domain>sample-Domain</domain>
     <agentPort>8079</agentPort>
     <tibco.Home>C:\TibcoBW6.8</tibco.Home>
   </properties>
